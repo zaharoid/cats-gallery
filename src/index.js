@@ -3,7 +3,7 @@ import * as catApi from './cat-api';
 import * as buttonStatus from './buttonStatus';
 import Notiflix from 'notiflix';
 
-refs = {
+const refs = {
   select: document.querySelector('.breed-select'),
   loader: document.querySelector('.loader'),
   error: document.querySelector('.error'),
