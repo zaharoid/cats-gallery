@@ -3,7 +3,9 @@ const API_KEY =
 
 function fetchBreeds() {
   const url = `https://api.thecatapi.com/v1/breeds?api_key=${API_KEY}`;
-  return fetch(url).then(response => response.json());
+  return fetch(url)
+    .then(response => response.json())
+    .catch(err => console.log(err));
 }
 
 function fetchCatByBreed(breedId) {

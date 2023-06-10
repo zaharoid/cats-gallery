@@ -15,26 +15,29 @@ refs.select.addEventListener('change', onOptionClick);
 renderSelect();
 
 function renderSelect() {
-  catApi.fetchBreeds().then(data => {
-    renderOptions(data);
-  });
+  catApi
+    .fetchBreeds()
+    .then(data => {
+      renderOptions(data);
+    })
+    .catch(err => console.log(err));
 }
 
 function onOptionClick() {
   refs.info.innerHTML = '';
 
-  buttonStatus.toggleSelect(refs.select);
   buttonStatus.toggleLoad(refs.loader);
   catApi
     .fetchCatByBreed(refs.select.value)
     .then(([cat]) => {
       renderInfo(cat);
       renderImg(cat);
-      buttonStatus.toggleSelect(refs.select);
+
       buttonStatus.toggleLoad(refs.loader);
     })
     .catch(() => {
       buttonStatus.toggleLoad(refs.loader);
+
       Notiflix.Notify.failure(
         'Oops! Something went wrong! Try reloading the page!'
       );
